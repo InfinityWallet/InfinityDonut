@@ -410,9 +410,7 @@ class InfinityDonut extends React.Component {
                 context.font = "15px "+this.state.fontFamily;
                 aux_aux_size = 17
             }
-            var bal = this.state.currency.symbol + preparePrice(this.total_balance * this.state.currency.rate,this.state.currency.decimals);
-            if (this.hovering)
-                bal = this.state.currency.symbol + preparePrice(this.balances[this.coin] * this.state.currency.rate,this.state.currency.decimals);
+            var bal = this.state.currency.symbol + preparePrice(this.state.amounts[this.coin].amountUSD * this.state.currency.rate,this.state.currency.decimals);
             var measure_text = context.measureText(bal)
             context.fillText(bal, this.state.width / 2 - (measure_text.width * 0.5), this.state.width / 2 + (aux_aux_size * 0.5) + (size_aux * 0.5) + 10-2)
             context.closePath();

@@ -242,7 +242,7 @@ var InfinityDonut = /*#__PURE__*/function (_React$Component) {
 
       for (var i = 0; i < keys.length; i++) {
         if (coins_b[keys[i]] != undefined) {
-          this.total_balance += parseFloat(coins_b[keys[i]].amount);
+          this.total_balance += parseFloat(coins_b[keys[i]].amountUSD);
         }
       }
 
@@ -251,7 +251,7 @@ var InfinityDonut = /*#__PURE__*/function (_React$Component) {
 
       if (this.total_balance > 0) {
         for (var i = 0; i < keys.length; i++) {
-          var bal = parseFloat(coins_b[keys[i]].amount);
+          var bal = parseFloat(coins_b[keys[i]].amountUSD);
 
           if (coins_b[keys[i]] == undefined || bal == 0) {
             continue;
@@ -259,9 +259,9 @@ var InfinityDonut = /*#__PURE__*/function (_React$Component) {
 
           if (bal / this.total_balance < 0.01) {
             if (this.balances["others"] == undefined) this.balances["others"] = 0;
-            this.balances["others"] += parseFloat(coins_b[keys[i]].amount);
-            this.others[keys[i]] = parseFloat(coins_b[keys[i]].amount);
-          } else this.balances[keys[i]] = coins_b[keys[i]].amount;
+            this.balances["others"] += parseFloat(coins_b[keys[i]].amountUSD);
+            this.others[keys[i]] = parseFloat(coins_b[keys[i]].amountUSD);
+          } else this.balances[keys[i]] = coins_b[keys[i]].amountUSD;
 
           this.num_assets += 1;
         }

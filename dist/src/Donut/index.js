@@ -258,8 +258,10 @@ var InfinityDonut = /*#__PURE__*/function (_React$Component) {
           }
 
           if (bal / this.total_balance < 0.01) {
-            if (this.balances["others"] == undefined) this.balances["others"] = 0;
-            this.balances["others"] += parseFloat(coins_b[keys[i]].amountUSD);
+            if (this.balances["others"] == undefined) this.balances["others"] = {
+              amountUSD: 0
+            };
+            this.balances["others"].amountUSD += parseFloat(coins_b[keys[i]].amountUSD);
             this.others[keys[i]] = parseFloat(coins_b[keys[i]].amountUSD);
           } else this.balances[keys[i]] = coins_b[keys[i]].amountUSD;
 

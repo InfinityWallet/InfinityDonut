@@ -187,6 +187,8 @@ class InfinityDonut extends React.Component {
         var keys = Object.keys(coins_b);
         this.drawSegments = {}
         this.balances = {};
+        this.balances["others"] = 0;
+
         for (var i = 0; i < keys.length; i++) {
 
             if (coins_b[keys[i]] != undefined) {
@@ -203,8 +205,6 @@ class InfinityDonut extends React.Component {
                 continue;
             }
             if (bal / this.total_balance < 0.01) {
-                if (this.balances["others"] == undefined)
-                    this.balances["others"] = 0;
                 if(coins_b[keys[i]].amountUSD != undefined){
                   this.balances["others"] += parseFloat(coins_b[keys[i]].amountUSD);
                   this.others[keys[i]] = parseFloat(coins_b[keys[i]].amountUSD);
@@ -216,7 +216,7 @@ class InfinityDonut extends React.Component {
           }
         }
         else{
-          this.balances["others"] = {amountUSD:0};
+          this.balances["others"] = 0;
         }
 
         //console.log(this.balances)

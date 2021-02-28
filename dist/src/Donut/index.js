@@ -443,26 +443,40 @@ var InfinityDonut = /*#__PURE__*/function (_React$Component) {
 
           var measure_text = context.measureText(bal);
           context.fillText(bal, this.state.width / 2 - measure_text.width * 0.5, this.state.width / 2 - 2);
+          context.closePath();
+          context.beginPath();
+          context.fillStyle = clear;
+          context.font = "21px " + this.state.fontFamily;
+          var aux_aux_size = 21;
+
+          if (this.state.width <= 370) {
+            context.font = "15px " + this.state.fontFamily;
+            aux_aux_size = 17;
+          }
+
+          var bal = this.state.currency.symbol + preparePrice(this.state.amounts[this.coin].amountUSD * this.state.currency.rate, this.state.currency.decimals);
+          var measure_text = context.measureText(bal);
+          context.fillText(bal, this.state.width / 2 - measure_text.width * 0.5, this.state.width / 2 + aux_aux_size * 0.5 + size_aux * 0.5 + 10 - 2);
+          context.closePath();
         } else {
           var measure_text = context.measureText("Others");
-          context.fillText(measure_text, this.state.width / 2 - measure_text.width * 0.5, this.state.width / 2 - 4);
+          context.fillText("Others", this.state.width / 2 - measure_text.width * 0.5, this.state.width / 2 - 4);
+          context.closePath();
+          context.beginPath();
+          context.fillStyle = clear;
+          context.font = "21px " + this.state.fontFamily;
+          var aux_aux_size = 21;
+
+          if (this.state.width <= 370) {
+            context.font = "15px " + this.state.fontFamily;
+            aux_aux_size = 17;
+          }
+
+          var bal = this.state.currency.symbol + preparePrice(this.balances[this.coin] * this.state.currency.rate, this.state.currency.decimals);
+          var measure_text = context.measureText(bal);
+          context.fillText(bal, this.state.width / 2 - measure_text.width * 0.5, this.state.width / 2 + aux_aux_size * 0.5 + size_aux * 0.5 + 10 - 2);
+          context.closePath();
         }
-
-        context.closePath();
-        context.beginPath();
-        context.fillStyle = clear;
-        context.font = "21px " + this.state.fontFamily;
-        var aux_aux_size = 21;
-
-        if (this.state.width <= 370) {
-          context.font = "15px " + this.state.fontFamily;
-          aux_aux_size = 17;
-        }
-
-        var bal = this.state.currency.symbol + preparePrice(this.state.amounts[this.coin].amountUSD * this.state.currency.rate, this.state.currency.decimals);
-        var measure_text = context.measureText(bal);
-        context.fillText(bal, this.state.width / 2 - measure_text.width * 0.5, this.state.width / 2 + aux_aux_size * 0.5 + size_aux * 0.5 + 10 - 2);
-        context.closePath();
       }
 
       if (this.hovering) {

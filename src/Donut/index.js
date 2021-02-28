@@ -96,6 +96,8 @@ class InfinityDonut extends React.Component {
         this.animate_in_value = 5;
         this.changeAmounts=this.changeAmounts.bind(this)
         this.changeCurrency=this.changeCurrency.bind(this)
+        this.changeTitle=this.changeTitle.bind(this)
+        this.changeOthers=this.changeOthers.bind(this)
     }
 
     clearHover() {
@@ -226,10 +228,16 @@ class InfinityDonut extends React.Component {
         this.updateCanvas();
     }
     changeOthers(tt){
-      this.setState({others:tt})
+      var ts =this;
+      this.setState({others:tt},function(){
+        ts.updateCanvas()
+      })
     }
     changeTitle(tt){
-      this.setState({title:tt})
+      var ts =this;
+      this.setState({title:tt},function(){
+        ts.updateCanvas()
+      })
     }
     updateCanvas() {
         this.clearCanvas();

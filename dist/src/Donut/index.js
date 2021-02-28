@@ -118,6 +118,7 @@ var InfinityDonut = /*#__PURE__*/function (_React$Component) {
       hovering: false,
       coin: '',
       title: props.title == undefined ? "Title" : props.title,
+      others: props.others == undefined ? "Others" : props.others,
       amounts: props.amounts,
       fontColor: props.fontColor != undefined ? props.fontColor : "#000000",
       secondFontColor: props.secondFontColor != undefined ? props.secondFontColor : "#FF0000",
@@ -133,6 +134,8 @@ var InfinityDonut = /*#__PURE__*/function (_React$Component) {
     _this.animate_in_value = 5;
     _this.changeAmounts = _this.changeAmounts.bind(_assertThisInitialized(_this));
     _this.changeCurrency = _this.changeCurrency.bind(_assertThisInitialized(_this));
+    _this.changeTitle = _this.changeTitle.bind(_assertThisInitialized(_this));
+    _this.changeOthers = _this.changeOthers.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -273,6 +276,26 @@ var InfinityDonut = /*#__PURE__*/function (_React$Component) {
 
 
       this.updateCanvas();
+    }
+  }, {
+    key: "changeOthers",
+    value: function changeOthers(tt) {
+      var ts = this;
+      this.setState({
+        others: tt
+      }, function () {
+        ts.updateCanvas();
+      });
+    }
+  }, {
+    key: "changeTitle",
+    value: function changeTitle(tt) {
+      var ts = this;
+      this.setState({
+        title: tt
+      }, function () {
+        ts.updateCanvas();
+      });
     }
   }, {
     key: "updateCanvas",
@@ -459,8 +482,8 @@ var InfinityDonut = /*#__PURE__*/function (_React$Component) {
           context.fillText(bal, this.state.width / 2 - measure_text.width * 0.5, this.state.width / 2 + aux_aux_size * 0.5 + size_aux * 0.5 + 10 - 2);
           context.closePath();
         } else {
-          var measure_text = context.measureText("Others");
-          context.fillText("Others", this.state.width / 2 - measure_text.width * 0.5, this.state.width / 2 - 4);
+          var measure_text = context.measureText(this.state.others);
+          context.fillText(this.state.others, this.state.width / 2 - measure_text.width * 0.5, this.state.width / 2 - 4);
           context.closePath();
           context.beginPath();
           context.fillStyle = clear;

@@ -247,7 +247,6 @@ class InfinityDonut extends React.Component {
             return;
         const context = this.canvas.current.getContext('2d')
         if(this.balances["others"] != undefined && this.balances["others"] >= 0 && this.balances["others"] / this.total_balance < 0.005){
-          this.total_balance -= this.balances["others"];
           this.balances["others"] = undefined;
           var assets = Object.keys(this.others).length;
           this.num_assets -= assets;
